@@ -3,118 +3,147 @@ import pytest
 
 @pytest.mark.code
 def test_espresso_1_y():
-    input1 = "espresso"
-    input2 = 1
-    input3 = "y"
+    order = "espresso"
+    amount = 1
+    glass = "y"
     expected_result = 50
-    actual_result = calculate(input1,input2,input3)
+    actual_result = calculate(order,amount,glass)
     assert expected_result == actual_result
 
 @pytest.mark.code
 def test_cappuccino_1_y():
-    input1 = "cappuccino"
-    input2 = 1
-    input3 = "y"
+    order = "cappuccino"
+    amount = 1
+    glass = "y"
     expected_result = 55
-    actual_result = calculate(input1,input2,input3)
+    actual_result = calculate(order,amount,glass)
     assert expected_result == actual_result
 
 @pytest.mark.code
 def test_late_1_y():
-    input1 = "late"
-    input2 = 1
-    input3 = "y"
+    order = "late"
+    amount = 1
+    glass = "y"
     expected_result = 60
-    actual_result = calculate(input1,input2,input3)
+    actual_result = calculate(order,amount,glass)
     assert expected_result == actual_result
 
 @pytest.mark.code
 def test_mocha_1_y():
-    input1 = "mocha"
-    input2 = 1
-    input3 = "y"
+    order = "mocha"
+    amount = 1
+    glass = "y"
     expected_result = 65
-    actual_result = calculate(input1,input2,input3)
+    actual_result = calculate(order,amount,glass)
     assert expected_result == actual_result
 
 @pytest.mark.code
 def test_espresso_1_n():
-    input1 = "espresso"
-    input2 = 1
-    input3 = "n"
+    order = "espresso"
+    amount = 1
+    glass = "n"
     expected_result = 55
-    actual_result = calculate(input1,input2,input3)
+    actual_result = calculate(order,amount,glass)
     assert expected_result == actual_result
 
 @pytest.mark.code
 def test_cappuccino_1_n():
-    input1 = "cappuccino"
-    input2 = 1
-    input3 = "n"
+    order = "cappuccino"
+    amount = 1
+    glass = "n"
     expected_result = 60
-    actual_result = calculate(input1,input2,input3)
+    actual_result = calculate(order,amount,glass)
     assert expected_result == actual_result
 
 @pytest.mark.code
 def test_late_1_n():
-    input1 = "late"
-    input2 = 1
-    input3 = "n"
+    order = "late"
+    amount = 1
+    glass = "n"
     expected_result = 65
-    actual_result = calculate(input1,input2,input3)
+    actual_result = calculate(order,amount,glass)
     assert expected_result == actual_result
 
 @pytest.mark.code
 def test_mocha_1_n():
-    input1 = "mocha"
-    input2 = 1
-    input3 = "n"
+    order = "mocha"
+    amount = 1
+    glass = "n"
     expected_result = 70
-    actual_result = calculate(input1,input2,input3)
+    actual_result = calculate(order,amount,glass)
     assert expected_result == actual_result
 
-#invalide_input
+#amount_invalide
 @pytest.mark.code
 def test_amount_invalide_0():
-    input1 = "mocha"
-    input2 = 0
-    input3 = "y"
-    expected_result = "order is wrong"
-    actual_result = calculate(input1,input2,input3)
-    assert expected_result == actual_result
-
-# @pytest.mark.code
-def test_glass_invalide():
-    input1 = "mocha"
-    input2 = 1
-    input3 = "p"
-    expected_result = "order is wrong"
-    actual_result = calculate(input1,input2,input3)
+    order = "mocha"
+    amount = 0
+    glass = "y"
+    expected_result = "Please input amount integer"
+    actual_result = calculate(order,amount,glass)
     assert expected_result == actual_result
 
 @pytest.mark.code
 def test_amount_invalide_0_5():
-    input1 = "mocha"
-    input2 = 0.5
-    input3 = "y"
-    expected_result = "order is wrong"
-    actual_result = calculate(input1,input2,input3)
+    order = "mocha"
+    amount = 0.5
+    glass = "y"
+    expected_result = "Please input amount integer"
+    actual_result = calculate(order,amount,glass)
     assert expected_result == actual_result
 
 @pytest.mark.code
-def test_amount_invalide_0():
-    input1 = "mocha"
-    input2 = -1
-    input3 = "y"
-    expected_result = "order is wrong"
-    actual_result = calculate(input1,input2,input3)
+def test_amount_invalide_minus_1():
+    order = "mocha"
+    amount = -1
+    glass = "y"
+    expected_result = "Please input amount integer"
+    actual_result = calculate(order,amount,glass)
     assert expected_result == actual_result
 
 @pytest.mark.code
-def test_order_invalide_0():
-    input1 = "ggg"
-    input2 = 1
-    input3 = "y"
-    expected_result = "order is wrong"
-    actual_result = calculate(input1,input2,input3)
+def test_amount_invalide_a():
+    order = "mocha"
+    amount = "a"
+    glass = "y"
+    expected_result = "Please input amount integer"
+    actual_result = calculate(order,amount,glass)
+    assert expected_result == actual_result
+
+#order_invalid
+@pytest.mark.code
+def test_order_invalide_str():
+    order = "ggg"
+    amount = 1
+    glass = "y"
+    expected_result = "Please input order espresso, cappuccino, late, mocha"
+    actual_result = calculate(order,amount,glass)
+    assert expected_result == actual_result
+
+@pytest.mark.code
+def test_order_invalide_int():
+    order = 1
+    amount = 1
+    glass = "y"
+    expected_result = "Please input order espresso, cappuccino, late, mocha"
+    actual_result = calculate(order,amount,glass)
+    assert expected_result == actual_result
+
+#glass_invalid
+@pytest.mark.code
+def test_glass_invalide_str():
+    order = "mocha"
+    amount = 1
+    glass = "p"
+    expected_result = "Please input glass y/n"
+    actual_result = calculate(order,amount,glass)
+    assert expected_result == actual_result
+
+@pytest.mark.code
+def test_glass_invalide_int():
+    order = "mocha"
+    amount = 1
+    glass = 1
+    expected_result = "Please input glass y/n"
+    actual_result = calculate(order,amount,glass)
     assert expected_result == actual_result
