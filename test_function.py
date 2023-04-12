@@ -118,7 +118,7 @@ def test_amount_invalide_sharp():
     expected_result = "Please input amount integer"
     actual_result = calculate(order,amount,glass)
     assert expected_result == actual_result
-    
+
 #order_invalid
 @pytest.mark.code
 def test_order_invalide_str():
@@ -130,8 +130,17 @@ def test_order_invalide_str():
     assert expected_result == actual_result
 
 @pytest.mark.code
-def test_order_invalide_int():
+def test_order_invalide_1():
     order = 1
+    amount = 1
+    glass = "y"
+    expected_result = "Please input order espresso, cappuccino, late, mocha"
+    actual_result = calculate(order,amount,glass)
+    assert expected_result == actual_result
+
+@pytest.mark.code
+def test_order_invalide_sharp():
+    order = "#"
     amount = 1
     glass = "y"
     expected_result = "Please input order espresso, cappuccino, late, mocha"
@@ -153,6 +162,15 @@ def test_glass_invalide_int():
     order = "mocha"
     amount = 1
     glass = 1
+    expected_result = "Please input glass y/n"
+    actual_result = calculate(order,amount,glass)
+    assert expected_result == actual_result
+
+@pytest.mark.code
+def test_glass_invalide_sharp():
+    order = "mocha"
+    amount = 1
+    glass = "#"
     expected_result = "Please input glass y/n"
     actual_result = calculate(order,amount,glass)
     assert expected_result == actual_result
