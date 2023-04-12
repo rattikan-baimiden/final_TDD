@@ -1,37 +1,29 @@
 def calculate(order,amount,glass):
     sum = 0
-    if glass == "y" or glass == "n":
-        if order == "espresso" and amount >= 1 :
-            sum = 55 * amount
-        elif order == "cappuccino" and amount >= 1:
-            sum = 60 * amount
-        elif order == "late" and amount >= 1:
-            sum = 65 * amount
-        elif order == "mocha" and amount >= 1:
-            sum = 70 * amount
-        else:
-            return "order is wrong" 
-    else:
-        return "order is wrong" 
+    if type(amount) == int:
+        if amount >= 1:
+            if order == "espresso" or order == "cappuccino" or order == "late" or order == "mocha":
+                if order == "espresso":
+                    sum = 55 * amount
+                elif order == "cappuccino":
+                    sum = 60 * amount
+                elif order == "late":
+                    sum = 65 * amount
+                elif order == "mocha":
+                    sum = 70 * amount
+            else:
+                return "Please input order espresso, cappuccino, late, mocha" 
 
-    if glass == "y":
-        sum = sum -5
+            if glass == "y":
+                sum = sum -5
+                return sum 
+            elif glass == "n":
+                return sum 
+            else:
+                return "Please input glass y/n"
 
-    return sum 
+        elif amount < 1:
+            return "Please input amount integer"
 
-# def invalide_input(order,amount,glass):
-#     if glass != "y" or glass != "n":
-#         return "input glass y/n"
-#     if amount != int or amount < 1:
-#         return "input amount integer"
-#     if order != "espresso" or order != "cappuccino" or order != "late" or order != "mocha":
-#         return "input order espresso,cappuccino,late,mocha"
-
-
-
-
-
-
-
-
-
+    elif type(amount) == str or type(amount) == float :
+        return "Please input amount integer"
