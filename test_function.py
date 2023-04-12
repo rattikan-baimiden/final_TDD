@@ -110,6 +110,15 @@ def test_amount_invalide_a():
     actual_result = calculate(order,amount,glass)
     assert expected_result == actual_result
 
+@pytest.mark.code
+def test_amount_invalide_sharp():
+    order = "mocha"
+    amount = "#"
+    glass = "y"
+    expected_result = "Please input amount integer"
+    actual_result = calculate(order,amount,glass)
+    assert expected_result == actual_result
+    
 #order_invalid
 @pytest.mark.code
 def test_order_invalide_str():
